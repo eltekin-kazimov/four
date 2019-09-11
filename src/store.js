@@ -1,3 +1,6 @@
+import {createDOM} from "./index";
+
+
 let store = {
 
     state: {
@@ -6,11 +9,11 @@ let store = {
             name: 'Taken',
             city: 'Baku',
             age: 27,
-            activeFullInfo: false,
+            activeFullInfo: true,
             tempName: 'Eltekin',
         },
 
-        message : {
+        message: {
             lastId: 1,
             messages: [
                 {id: 1, body: 'Salam'},
@@ -19,27 +22,34 @@ let store = {
 
     },
 
-    unActive () {
+    unActive() {
         this.state.info.activeFullInfo = !this.state.info.activeFullInfo;
+        createDOM();
     },
 
-    updateName () {
+    updateName() {
         if (this.state.info.name !== this.state.info.tempName && this.state.info.tempName) {
             this.state.info.name = this.state.info.tempName;
-            alert ( 'Added name !' );
+            createDOM();
         }
     },
 
-    addMessage ( text ) {
-        if ( text ) {
+    updateTempName(value) {
+        this.state.info.tempName = value;
+        createDOM();
+    },
+
+    addMessage(text) {
+        if (text) {
             this.state.message.lastId++;
-            this.state.message.messages.push( {id: this.state.message.lastId, body: text} );
-            alert ( `Added message ( ${this.state.message.lastId} ) ` );
+            this.state.message.messages.push({id: this.state.message.lastId, body: text});
+            createDOM();
+            alert(`Added message ( ${this.state.message.lastId} `);
         } else {
-            alert ( 'Text is None !' );
+            alert('Text is None !');
         }
 
-    }
+    },
 };
 
 export default store;
