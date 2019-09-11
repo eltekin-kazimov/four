@@ -4,6 +4,7 @@ import './App.module.css';
 import s from './App.module.css';
 import {NavLink} from "react-router-dom";
 import store from './store';
+import Message from "./Message/Message";
 
 
 function App(props) {
@@ -26,6 +27,11 @@ function App(props) {
                       unActive={ store.unActive.bind(store)}
                       updateName={store.updateName.bind(store)}
                       updateTempName={store.updateTempName.bind(store)}
+                />
+                <Message
+                    message={store.state.message}
+                    addMessage={store.addMessage.bind(store)}
+                    updateTempMesBody={store.updateTempMesBody.bind(store)}
                 />
             </div>
 

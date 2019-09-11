@@ -20,6 +20,7 @@ function Info(props) {
                 <li>
                     <b> Name - {props.info.name}</b> -->
                     <input ref={spy} value={props.info.tempName} onChange={ () => props.updateTempName(spy.current.value) } /> --->
+                    {/*<input ref={spy} value={props.message.tempBody}  onChange={() => props.updateTempMesBody(spy.current.value)} />*/}
                     <button onClick={() => props.updateName(props.info.tempName)} > Tesdiq </button>
                 </li>
                 <li>

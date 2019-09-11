@@ -15,6 +15,7 @@ let store = {
 
         message: {
             lastId: 1,
+            tempBody: 'Bosdur',
             messages: [
                 {id: 1, body: 'Salam'},
             ],
@@ -39,12 +40,17 @@ let store = {
         createDOM();
     },
 
-    addMessage(text) {
-        if (text) {
+    updateTempMesBody(value) {
+        this.state.message.tempBody = value;
+        createDOM();
+    },
+
+    addMessage() {
+        if (this.state.message.tempBody) {
             this.state.message.lastId++;
-            this.state.message.messages.push({id: this.state.message.lastId, body: text});
+            this.state.message.messages.push({id: this.state.message.lastId, body: this.state.message.tempBody});
+            this.state.message.tempBody = '';
             createDOM();
-            alert(`Added message ( ${this.state.message.lastId} `);
         } else {
             alert('Text is None !');
         }
