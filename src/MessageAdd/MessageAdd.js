@@ -1,4 +1,5 @@
 import React from 'react';
+import {createActionAddMessage, createActionUpdateTempMesBody} from "../redux/reducerMessage";
 
 
 function MessageAdd(props) {
@@ -8,11 +9,13 @@ function MessageAdd(props) {
     return (
         <div>
             <div>
-                <input ref={spy} value={props.message.tempBody}  onChange={ () => props.updateTempMesBody(spy.current.value) } />
+                <input ref={spy}
+                       value={props.message.tempBody}
+                       onChange={ () => props.dispatch(createActionUpdateTempMesBody(spy.current.value)) } />
             </div>
             <br />
             <div>
-                <button onClick={() => props.addMessage()}> Tesdiq </button>
+                <button onClick={() => props.dispatch(createActionAddMessage())}> Tesdiq </button>
             </div>
         </div>
     );

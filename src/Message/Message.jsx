@@ -23,8 +23,7 @@ function Message(props) {
             </table>
             <br />
             <MessageAdd message={props.message}
-                        updateTempMesBody={props.updateTempMesBody}
-                        addMessage={props.addMessage}
+                        dispatch={props.dispatch}
             />
         </div>
     );

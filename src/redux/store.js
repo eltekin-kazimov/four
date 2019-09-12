@@ -1,4 +1,6 @@
-import {createDOM} from "./../index";
+import {createDOM} from "./../middleWare";
+import reducerInfo from "./reducerInfo";
+import reducerMessage from "./reducerMessage";
 
 
 let store = {
@@ -23,17 +25,12 @@ let store = {
 
     },
 
-    addMessage() {
-        if (this.state.message.tempBody) {
-            this.state.message.lastId++;
-            this.state.message.messages.push({id: this.state.message.lastId, body: this.state.message.tempBody});
-            this.state.message.tempBody = '';
-            createDOM();
-        } else {
-            alert('Text is None !');
-        }
+    dispatch(action) {
+        reducerInfo(this.state.info, action);
+        reducerMessage(this.state.message, action);
+        createDOM();
+    }
 
-    },
 };
 
 export default store;

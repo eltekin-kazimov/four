@@ -2,12 +2,12 @@ import React from 'react';
 import Info from './Info/Info';
 import './App.module.css';
 import s from './App.module.css';
-import {NavLink} from "react-router-dom";
-import store from './store';
+import {NavLink, Route} from "react-router-dom";
+import store from './redux/store';
 import Message from "./Message/Message";
 
 
-function App(props) {
+function App() {
     return (
         <div>
             <div className={s.menu}>
@@ -16,22 +16,21 @@ function App(props) {
                         <NavLink to="/info">Info</NavLink>
                     </li>
                     <li className={s.item}>
-                        <NavLink to="/info">Message</NavLink>
+                        <NavLink to="/message">Message</NavLink>
                     </li>
                 </ul>
             </div>
 
             <br/>
             <div className={s.appBody}>
-                <Info info={props.store.state.info}
-                      unActive={ store.unActive.bind(store)}
-                      updateName={store.updateName.bind(store)}
-                      updateTempName={store.updateTempName.bind(store)}
+                <Route path='/info'
+                       render={() => <Info info={store.state.info} dispatch={store.dispatch.bind(store)}/>}
                 />
-                <Message
-                    message={store.state.message}
-                    addMessage={store.addMessage.bind(store)}
-                    updateTempMesBody={store.updateTempMesBody.bind(store)}
+                <Route path='/message'
+                       render={ () => <Message
+                           message={store.state.message}
+                           dispatch={store.dispatch.bind(store)}
+                       />}
                 />
             </div>
 

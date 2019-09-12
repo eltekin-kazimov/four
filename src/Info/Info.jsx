@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Info.module.css';
+import {createActionUnActive, createActionUpdateName, createActionUpdateTempName} from "../redux/reducerInfo";
 
 
 function Info(props) {
@@ -19,9 +20,10 @@ function Info(props) {
             <ul>
                 <li>
                     <b> Name - {props.info.name}</b> -->
-                    <input ref={spy} value={props.info.tempName} onChange={ () => props.updateTempName(spy.current.value) } /> --->
-                    {/*<input ref={spy} value={props.message.tempBody}  onChange={() => props.updateTempMesBody(spy.current.value)} />*/}
-                    <button onClick={() => props.updateName(props.info.tempName)} > Tesdiq </button>
+                    <input ref={spy}
+                           value={props.info.tempName}
+                           onChange={ () => props.dispatch(createActionUpdateTempName(spy.current.value)) } /> --->
+                    <button onClick={() =>  props.dispatch(createActionUpdateName())} > Tesdiq </button>
                 </li>
                 <li>
                     <b> Age - {props.info.age}</b>
@@ -31,7 +33,7 @@ function Info(props) {
                 </li>
                 {full}
             </ul>
-            <button onClick={ props.unActive }> OK </button>
+            <button onClick={() => props.dispatch(createActionUnActive()) }> OK </button>
         </div>
     );
 }
