@@ -9,5 +9,4 @@ let red = combineReducers({
 
 let store = createStore();
 
-
 export default store;
