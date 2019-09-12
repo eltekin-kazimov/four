@@ -23,28 +23,6 @@ let store = {
 
     },
 
-    unActive() {
-        this.state.info.activeFullInfo = !this.state.info.activeFullInfo;
-        createDOM();
-    },
-
-    updateName() {
-        if (this.state.info.name !== this.state.info.tempName && this.state.info.tempName) {
-            this.state.info.name = this.state.info.tempName;
-            createDOM();
-        }
-    },
-
-    updateTempName(value) {
-        this.state.info.tempName = value;
-        createDOM();
-    },
-
-    updateTempMesBody(value) {
-        this.state.message.tempBody = value;
-        createDOM();
-    },
-
     addMessage() {
         if (this.state.message.tempBody) {
             this.state.message.lastId++;
